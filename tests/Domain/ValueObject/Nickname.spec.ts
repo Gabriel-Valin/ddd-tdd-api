@@ -16,4 +16,9 @@ describe("Nickname Value Object", () => {
   it("should returns throw if value have special characters", () => {
     expect(() => new Nickname("!Special#%Cha_r*")).toThrow()
   })
+
+  it("should has toString method to get a value", () => {
+    const method = new Nickname("gvt3ch")
+    expect(method.toString()).toBe("gvt3ch")
+  })
 })
