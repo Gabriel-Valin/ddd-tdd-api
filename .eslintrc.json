@@ -7,7 +7,6 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "@typescript-eslint/no-undef",
     "prettier"
   ],
   "overrides": [],
@@ -18,5 +17,8 @@
     "project": ["./tsconfig.json"]
   },
   "plugins": ["@typescript-eslint"],
-  "rules": {}
+  "rules": {
+    "prefer-regex-literals": "off",
+    "no-regex-spaces": "off"
+  }
 }
