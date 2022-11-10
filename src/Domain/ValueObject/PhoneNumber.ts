@@ -1,6 +1,6 @@
 export default class PhoneNumber {
-  constructor(private readonly phoneNumber: string) {
-    const validLength = phoneNumber.length < 13
+  constructor(private readonly phone: string) {
+    const validLength = phone.length < 13
     if (validLength) {
       throw new Error("PhoneNumber length invalid")
     }
@@ -9,15 +9,15 @@ export default class PhoneNumber {
       "^\\((14|15|17|18|16)\\)(\\s\\d{9}|\\d{9}|(\\s|)\\d{5}-\\d{4})$"
     )
 
-    const matchValue = expectedFormat.test(phoneNumber)
+    const matchValue = expectedFormat.test(phone)
     if (!matchValue) {
       throw new Error("PhoneNumber must follow PT-BR format")
     }
 
-    this.phoneNumber = phoneNumber
+    this.phone = phone
   }
 
   public toString(): string {
-    return this.phoneNumber
+    return this.phone
   }
 }

@@ -1,16 +1,16 @@
 export default class ContactId {
-  constructor(private readonly contactId: string) {
+  constructor(private readonly id: string) {
     const expectedFormat = new RegExp("^\\d{1,}$")
-    const matchValue = expectedFormat.test(contactId)
+    const matchValue = expectedFormat.test(id)
 
     if (!matchValue) {
       throw new Error("ContactId must be a valid value")
     }
 
-    this.contactId = contactId
+    this.id = id
   }
 
   public toString(): string {
-    return this.contactId
+    return this.id
   }
 }

@@ -1,14 +1,14 @@
 export default class PersonName {
-  constructor(private readonly personName: string) {
-    const validLength = personName.length < 4
+  constructor(private readonly person: string) {
+    const validLength = person.length < 4
     if (validLength) {
       throw new Error("Invalid length person name")
     }
 
-    this.personName = personName
+    this.person = person
   }
 
   public toString(): string {
-    return this.personName
+    return this.person
   }
 }
