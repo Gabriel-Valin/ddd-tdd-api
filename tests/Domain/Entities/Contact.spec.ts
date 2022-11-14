@@ -75,6 +75,50 @@ describe("Contact Entity", () => {
     ).toEqual(validContactObject)
   })
 
+  it("should return name if getName is called", () => {
+    const method = new Contact(
+      new ContactId("1"),
+      new PersonName("Gabriel Valin"),
+      new Nickname("gvt3ch"),
+      new PhoneNumber("(14)999999999")
+    )
+
+    expect(method.getName().toString()).toBe("Gabriel Valin")
+  })
+
+  it("should return id if getId is called", () => {
+    const method = new Contact(
+      new ContactId("1"),
+      new PersonName("Gabriel Valin"),
+      new Nickname("gvt3ch"),
+      new PhoneNumber("(14)999999999")
+    )
+
+    expect(method.getId().toString()).toBe("1")
+  })
+
+  it("should return nick if getNick is called", () => {
+    const method = new Contact(
+      new ContactId("1"),
+      new PersonName("Gabriel Valin"),
+      new Nickname("gvt3ch"),
+      new PhoneNumber("(14)999999999")
+    )
+
+    expect(method.getNick().toString()).toBe("gvt3ch")
+  })
+
+  it("should return phone if getPhone is called", () => {
+    const method = new Contact(
+      new ContactId("1"),
+      new PersonName("Gabriel Valin"),
+      new Nickname("gvt3ch"),
+      new PhoneNumber("(14)999999999")
+    )
+
+    expect(method.getPhone().toString()).toBe("(14)999999999")
+  })
+
   it("should have an public method toJson to called", () => {
     const method = new Contact(
       new ContactId("1"),
