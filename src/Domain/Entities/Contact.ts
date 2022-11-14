@@ -26,4 +26,13 @@ export default class Contact {
   public getPhone(): PhoneNumber {
     return this.phone
   }
+
+  public toJson(): object {
+    return {
+      id: this.id.toString(),
+      name: this.name.toString(),
+      nick: this.nick.toString(),
+      phone: this.phone.toString(),
+    }
+  }
 }
