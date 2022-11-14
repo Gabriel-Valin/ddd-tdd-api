@@ -65,7 +65,6 @@ describe("Contact Entity", () => {
   })
 
   it("should returns an object of Contact kind", () => {
-    console.log(validContactObject)
     expect(
       new Contact(
         new ContactId("1"),
@@ -74,5 +73,32 @@ describe("Contact Entity", () => {
         new PhoneNumber("(14)999999999")
       )
     ).toEqual(validContactObject)
+  })
+
+  it("should have an public method toJson to called", () => {
+    const method = new Contact(
+      new ContactId("1"),
+      new PersonName("Gabriel Valin"),
+      new Nickname("gvt3ch"),
+      new PhoneNumber("(14)999999999")
+    )
+
+    expect(method.toJson).toBeDefined()
+  })
+
+  it("should have an public method toJson to called", () => {
+    const method = new Contact(
+      new ContactId("1"),
+      new PersonName("Gabriel Valin"),
+      new Nickname("gvt3ch"),
+      new PhoneNumber("(14)999999999")
+    )
+
+    expect(method.toJson()).toEqual({
+      id: "1",
+      name: "Gabriel Valin",
+      nick: "gvt3ch",
+      phone: "(14)999999999",
+    })
   })
 })
