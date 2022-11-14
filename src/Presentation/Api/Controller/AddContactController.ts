@@ -9,18 +9,16 @@ import { Request, Response } from "express"
 
 export default class AddContactController {
   public async handle(req: Request, res: Response): Promise<Response> {
-    const contact = this.validateContact(req.body)
+    const contact = this.validateContact(req)
     const contactCommandRepo = new AddContactCommandRepo()
     const createContactCommandInteractor = new AddContactCommandInteractor(
       contactCommandRepo
     )
-
     const result = await createContactCommandInteractor.action(contact)
-
     return res.status(201).json(result)
   }
 
-  private validateContact(body: any): Contact {
+  private validateContact({ body }: any): Contact {
     const { name, nick, phone } = body
     return new Contact(
       new ContactId("999"),
