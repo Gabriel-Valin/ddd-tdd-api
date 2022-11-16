@@ -4,10 +4,10 @@ import ContactId from "@/Domain/ValueObject/ContactId"
 import Nickname from "@/Domain/ValueObject/Nickname"
 import PersonName from "@/Domain/ValueObject/PersonName"
 import PhoneNumber from "@/Domain/ValueObject/PhoneNumber"
-import { ApplicationError } from "@/Main/Error/ApplicationError"
 import { prismaConnection } from "@/Infra/Utils/Prisma/Connection"
+import { ApplicationError } from "@/Main/Error/ApplicationError"
 
-export default class AddContactCommandRepo implements ContactCommandRepository {
+export class AddContactCommandRepo implements ContactCommandRepository {
   public async addContact(contact: Contact): Promise<Contact> {
     try {
       const result = await prismaConnection.contact.create({
@@ -24,7 +24,7 @@ export default class AddContactCommandRepo implements ContactCommandRepository {
         new PhoneNumber(result?.phone)
       )
     } catch (error) {
-      throw new ApplicationError("Not able to create a new contact")
+      throw new ApplicationError("Not able to create a new contact", 500)
     }
   }
 }

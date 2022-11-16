@@ -5,7 +5,7 @@ import ContactId from "@/Domain/ValueObject/ContactId"
 import Nickname from "@/Domain/ValueObject/Nickname"
 import PersonName from "@/Domain/ValueObject/PersonName"
 import PhoneNumber from "@/Domain/ValueObject/PhoneNumber"
-import AddContactCommandRepo from "@/Infra/Repository/AddContactCommandRepo"
+import { AddContactCommandRepo } from "@/Infra/Repository/AddContactCommandRepo"
 import ContactQueryRepo from "@/Infra/Repository/ContactQueryRepo"
 
 describe("AddCommandContactRepository", () => {
@@ -25,7 +25,7 @@ describe("AddCommandContactRepository", () => {
     validPhone = new PhoneNumber("(14)996820000")
   })
 
-  it("should returns undefined if no have error", async () => {
+  it("should returns Contact if no have error", async () => {
     const createContact = await command.addContact(
       new Contact(validId, validName, validNick, validPhone)
     )

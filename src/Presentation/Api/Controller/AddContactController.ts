@@ -4,8 +4,8 @@ import ContactId from "@/Domain/ValueObject/ContactId"
 import Nickname from "@/Domain/ValueObject/Nickname"
 import PersonName from "@/Domain/ValueObject/PersonName"
 import PhoneNumber from "@/Domain/ValueObject/PhoneNumber"
-import AddContactCommandRepo from "@/Infra/Repository/AddContactCommandRepo"
-import { Response } from "@/Presentation/Api/Controller/Controller"
+import { AddContactCommandRepo } from "@/Infra/Repository/AddContactCommandRepo"
+import { Controller, Response } from "@/Presentation/Api/Controller/Controller"
 
 type IRequest = {
   name: string
@@ -13,7 +13,7 @@ type IRequest = {
   phone: string
 }
 
-export default class AddContactController {
+export default class AddContactController implements Controller {
   public async handle({ name, nick, phone }: IRequest): Promise<Response> {
     const contact = this.validateContact({ name, nick, phone })
     const contactCommandRepo = new AddContactCommandRepo()
