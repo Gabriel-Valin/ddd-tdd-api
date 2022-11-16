@@ -4,19 +4,19 @@ export default class Nickname {
   constructor(private readonly nick: string) {
     const validLength = nick.length < 3
     if (validLength) {
-      throw new DomainError("Nickname must be less than 3 characters")
+      throw new DomainError("NicknameCannotBeLessThan3Characters")
     }
 
     const maxNicknameSize = nick.length > 16
     if (maxNicknameSize) {
-      throw new DomainError("Nickname cannot must be more than 16 characters")
+      throw new DomainError("NicknameCannotBeMoreThan16Characters")
     }
 
     const expectedFormat = new RegExp("^\\w+$")
     const matchValue = expectedFormat.test(nick)
 
     if (!matchValue) {
-      throw new DomainError("Nickname cannot have special characters")
+      throw new DomainError("NicknameCannotHaveSpecialCharacters")
     }
 
     this.nick = nick

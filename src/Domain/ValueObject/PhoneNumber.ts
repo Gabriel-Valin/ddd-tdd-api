@@ -4,7 +4,7 @@ export default class PhoneNumber {
   constructor(private readonly phone: string) {
     const validLength = phone.length < 13
     if (validLength) {
-      throw new DomainError("PhoneNumber length invalid")
+      throw new DomainError("InvalidPhoneNumberLength")
     }
 
     const expectedFormat = new RegExp(
@@ -13,7 +13,7 @@ export default class PhoneNumber {
 
     const matchValue = expectedFormat.test(phone)
     if (!matchValue) {
-      throw new DomainError("PhoneNumber must follow PT-BR format")
+      throw new DomainError("InvalidPhoneNumberLength")
     }
 
     this.phone = phone

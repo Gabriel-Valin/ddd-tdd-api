@@ -6,7 +6,7 @@ export default class ContactId {
     const matchValue = expectedFormat.test(id)
 
     if (!matchValue) {
-      throw new DomainError("ContactId must be a valid value")
+      throw new DomainError("InvalidContactId")
     }
 
     this.id = id
