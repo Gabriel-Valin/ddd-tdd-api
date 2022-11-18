@@ -1,4 +1,4 @@
-import AddContactController from "@/Presentation/Api/Controller/AddContactController"
+import AddContactController from "@/Presentation/Api/Controller/Contact/AddContactController"
 import { Router } from "express"
 import { adaptExpressRoute } from "@/Main/Adapter/ExpressRouter"
 
