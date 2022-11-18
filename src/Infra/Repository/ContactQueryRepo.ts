@@ -19,7 +19,6 @@ export default class ContactQueryRepo
     if (!contact) {
       return undefined
     }
-
     const result = new Contact(
       new ContactId(String(contact?.id)),
       new PersonName(contact?.name),
