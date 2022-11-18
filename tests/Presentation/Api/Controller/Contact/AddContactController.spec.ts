@@ -1,7 +1,7 @@
 import { AddContactCommandRepo } from "@/Infra/Repository/AddContactCommandRepo"
 import { ApplicationError } from "@/Main/Error/ApplicationError"
 import { DomainError } from "@/Main/Error/DomainError"
-import AddContactController from "@/Presentation/Api/Controller/AddContactController"
+import AddContactController from "@/Presentation/Api/Controller/Contact/AddContactController"
 
 jest.mock("@/Infra/Repository/AddContactCommandRepo")
 
