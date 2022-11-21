@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 
 volumes:
   mysql_dbdata:
@@ -27,14 +27,18 @@ services:
 
   app:
     container_name: api
-    build: .
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - mysql_database
     ports:
       - "3013:3013"
+      - "5555:5555"
     volumes:
-      - .:/usr/app
-      - ./node_modules:/usr/app/node_modules
+      - .:/ddd
+      - ./node_modules:/ddd/node_modules/
     networks:
       - mysql-adminer-network
 

@@ -31,7 +31,6 @@ export default class UpdateContactController implements Controller {
       data: result?.toJson()
     }
   }
-
   private validateContact({ contactId, name, nick, phone }: IRequest): Contact {
     const contact = new Contact(
       new ContactId(contactId),

@@ -22,7 +22,7 @@ export default class AddContactController implements Controller {
     )
     await createContactCommandInteractor.action(contact)
     return {
-      statusCode: 201,
+      statusCode: 201
     }
   }
 

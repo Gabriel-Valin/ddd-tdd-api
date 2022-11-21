@@ -1,13 +1,13 @@
 FROM node:18.12.0
 
-WORKDIR /usr/app
+WORKDIR /ddd
 
-COPY package*.json ./
+COPY package*.json /ddd/
 
 RUN npm ci
 
-COPY . .
-
 EXPOSE 3013
+
+COPY . .
 
 CMD ["npm", "run", "go:dev"]

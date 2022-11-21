@@ -14,8 +14,8 @@ export class AddContactCommandRepo implements ContactCommandRepository {
         data: {
           name: contact.getName().toString(),
           nick: contact.getNick().toString(),
-          phone: contact.getPhone().toString(),
-        },
+          phone: contact.getPhone().toString()
+        }
       })
       return new Contact(
         new ContactId(String(result?.id)),
