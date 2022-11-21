@@ -26,19 +26,15 @@ services:
       - mysql-adminer-network
 
   app:
-    container_name: api
-    restart: always
-    build:
-      context: .
-      dockerfile: Dockerfile
+    container_name: crud-api
+    build: .
     depends_on:
       - mysql_database
     ports:
       - "3013:3013"
       - "5555:5555"
     volumes:
-      - .:/ddd
-      - ./node_modules:/ddd/node_modules/
+      - .:/vln/app
     networks:
       - mysql-adminer-network
 

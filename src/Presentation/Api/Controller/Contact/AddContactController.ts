@@ -20,9 +20,10 @@ export default class AddContactController implements Controller {
     const createContactCommandInteractor = new AddContactCommandInteractor(
       contactCommandRepo
     )
-    await createContactCommandInteractor.action(contact)
+    const result = await createContactCommandInteractor.action(contact)
     return {
-      statusCode: 201
+      statusCode: 201,
+      data: result.toJson()
     }
   }
 

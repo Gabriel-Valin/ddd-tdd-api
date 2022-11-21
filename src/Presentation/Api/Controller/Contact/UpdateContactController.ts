@@ -4,7 +4,6 @@ import ContactId from "@/Domain/ValueObject/ContactId"
 import Nickname from "@/Domain/ValueObject/Nickname"
 import PersonName from "@/Domain/ValueObject/PersonName"
 import PhoneNumber from "@/Domain/ValueObject/PhoneNumber"
-import ContactQueryRepo from "@/Infra/Repository/ContactQueryRepo"
 import { UpdateContactCommandRepo } from "@/Infra/Repository/UpdateContactCommandRepo"
 import { Controller, Response } from "@/Presentation/Api/Controller/Controller"
 
@@ -25,10 +24,9 @@ export default class UpdateContactController implements Controller {
     const contact = this.validateContact({ contactId, name, nick, phone })
     const updateRepo = new UpdateContactCommandRepo()
     const updateInteractor = new UpdateContactInteractor(updateRepo)
-    const result = await updateInteractor.action(contact)
+    await updateInteractor.action(contact)
     return {
-      statusCode: 204,
-      data: result?.toJson()
+      statusCode: 204
     }
   }
   private validateContact({ contactId, name, nick, phone }: IRequest): Contact {

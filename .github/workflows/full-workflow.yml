@@ -26,7 +26,7 @@ jobs:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     env:
-      DATABASE_URL: mysql://mysql:mysql@127.0.0.1:3306/database_tests
+      DATABASE_URL_DEV: mysql://mysql:mysql@127.0.0.1:3306/database_tests
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]

@@ -1,8 +1,8 @@
 FROM node:18.12.0
 
-WORKDIR /ddd
+WORKDIR /vln/app
 
-COPY package*.json /ddd/
+COPY package*.json /vln/app/
 
 RUN npm ci
 

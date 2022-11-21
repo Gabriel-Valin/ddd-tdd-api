@@ -7,7 +7,7 @@
     "start": "node -r dotenv/config dist/Server.js",
     "clean": "rimraf dist",
     "build": "npm run clean && tsc -p tsconfig-build.json && tsc-alias",
-    "go:dev": "ts-node-dev --respawn --transpile-only -r dotenv/config -r tsconfig-paths/register --clear --exit-child src/Server.ts",
+    "go:dev": "ts-node-dev --respawn --transpile-only -r dotenv/config -r tsconfig-paths/register --exit-child src/Server.ts",
     "go:start": "nodemon --watch 'src/' --exec 'ts-node -r tsconfig-paths/register src/Server.ts' -e ts",
     "husky:prepare": "husky install",
     "test": "jest --passWithNoTests --no-cache --runInBand",
