@@ -12,10 +12,5 @@ export type IUpdateContact = {
 }
 
 export interface UpdateContactRepository {
-  updateContact({
-    contactId,
-    name,
-    nick,
-    phone,
-  }: IUpdateContact): Promise<Contact>
+  updateContact(contact: Contact): Promise<Contact>
 }

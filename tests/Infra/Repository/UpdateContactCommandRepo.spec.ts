@@ -7,7 +7,7 @@ import PhoneNumber from "@/Domain/ValueObject/PhoneNumber"
 import { prismaConnection } from "@/Infra/Utils/Prisma/Connection"
 import { AddContactCommandRepo } from "@/Infra/Repository/AddContactCommandRepo"
 import { UpdateContactRepository } from "@/Domain/Repositories/UpdateContactRepositoryInterface"
-import UpdateContactCommandRepo from "@/Infra/Repository/UpdateContactCommandRepo"
+import { UpdateContactCommandRepo } from "@/Infra/Repository/UpdateContactCommandRepo"
 
 const makeSut = (): UpdateContactRepository => {
   const sut = new UpdateContactCommandRepo()
@@ -40,12 +40,7 @@ describe("QueryContactRepository", () => {
   it("should returns Contact if record has been changed with succesfull", async () => {
     const id = new ContactId(prismaContact.getId().toString())
     const sut = makeSut()
-    const contact = await sut.updateContact({
-      contactId: id,
-      name,
-      nick,
-      phone,
-    })
+    const contact = await sut.updateContact(new Contact(id, name, nick, phone))
 
     expect(contact).toBeInstanceOf(Contact)
     expect(contact).toHaveProperty("id")

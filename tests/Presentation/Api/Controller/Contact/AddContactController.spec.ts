@@ -16,7 +16,7 @@ describe("AddContactController", () => {
     const response = await sut.handle({
       name: "Gabriel Valin",
       nick: "gvt3ch",
-      phone: "(14)996928602",
+      phone: "(14)996928602"
     })
 
     expect(response.statusCode).toBe(201)
@@ -27,7 +27,7 @@ describe("AddContactController", () => {
     const promise = sut.handle({
       name: "Gabriel Valin",
       nick: "gv",
-      phone: "14996980000",
+      phone: "14996980000"
     })
 
     await expect(promise).rejects.toEqual(
@@ -47,7 +47,7 @@ describe("AddContactController", () => {
     const response = sut.handle({
       name: "Gabriel Valin",
       nick: "gvt3ch",
-      phone: "(14)996928602",
+      phone: "(14)996928602"
     })
 
     expect(response).rejects.toEqual(
