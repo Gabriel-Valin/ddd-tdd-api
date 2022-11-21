@@ -32,6 +32,7 @@ describe("AddCommandContactRepository", () => {
 
   afterAll(async () => {
     await prismaConnection.contact.deleteMany()
+    await prismaConnection.$disconnect()
   })
 
   it("should returns Contact if no have error", async () => {

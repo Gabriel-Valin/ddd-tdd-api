@@ -35,6 +35,7 @@ describe("QueryContactRepository", () => {
 
   afterAll(async () => {
     await prismaConnection.contact.deleteMany()
+    await prismaConnection.$disconnect()
   })
 
   it("should returns Contact if found contact", async () => {

@@ -1,9 +1,7 @@
-import { AddContactCommandRepo } from "@/Infra/Repository/AddContactCommandRepo"
 import { ApplicationError } from "@/Main/Error/ApplicationError"
 import { DomainError } from "@/Main/Error/DomainError"
 import AddContactController from "@/Presentation/Api/Controller/Contact/AddContactController"
-
-jest.mock("@/Infra/Repository/AddContactCommandRepo")
+import { faker } from "@faker-js/faker"
 
 const makeSut = (): AddContactController => {
   const sut = new AddContactController()
@@ -36,16 +34,10 @@ describe("AddContactController", () => {
   })
 
   it("should return 500 if have infra error", async () => {
-    jest
-      .spyOn(AddContactCommandRepo.prototype, "addContact")
-      .mockImplementationOnce(() => {
-        throw new ApplicationError("Not able to create a new contact", 500)
-      })
-
     const sut = makeSut()
 
     const response = sut.handle({
-      name: "Gabriel Valin",
+      name: faker.lorem.words(100),
       nick: "gvt3ch",
       phone: "(14)996928602"
     })

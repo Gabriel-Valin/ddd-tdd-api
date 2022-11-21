@@ -63,11 +63,6 @@ describe("UpdateContactController", () => {
     })
 
     expect(updatedContact.statusCode).toBe(204)
-    expect(updatedContact.data).toEqual({
-      id: String(newContact.id),
-      name: "Thais FernandeS GV",
-      nick: "Thais1gv_",
-      phone: "(14)998820000"
-    })
+    expect(updatedContact.data).toBeUndefined()
   })
 })

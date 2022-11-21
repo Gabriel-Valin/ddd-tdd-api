@@ -1,7 +1,7 @@
-version: "3.7"
+version: "3.8"
 
 volumes:
-  mysql_dbdata:
+  mysql_dbdata2:
 
 services:
   mysql_database:
@@ -12,9 +12,8 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mysql_dbdata:/var/lib/mysql
-    networks:
-      - mysql-adminer-network
+      - mysql_dbdata2:/var/lib/mysql
+
 
   adminer:
     container_name: adminer
@@ -22,12 +21,12 @@ services:
     restart: unless-stopped
     ports:
       - "8081:8080"
-    networks:
-      - mysql-adminer-network
 
   app:
     container_name: crud-api
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - mysql_database
     ports:
@@ -35,9 +34,4 @@ services:
       - "5555:5555"
     volumes:
       - .:/vln/app
-    networks:
-      - mysql-adminer-network
 
-networks:
-  mysql-adminer-network:
-    driver: bridge
